@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coursology Flashcard Sync</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="popup-header">
+      <div class="brand">
+        <div class="logo-badge">⚡</div>
+        <div class="title-group">
+          <h1>Coursology Sync</h1>
+          <span class="version">v1.0.0 • Safari MV3</span>
+        </div>
+      </div>
+      <div class="status-indicator" id="status-indicator" title="Extension Active">
+        <span class="status-dot"></span>
+        <span id="status-text">Active</span>
+      </div>
+    </header>
+
+    <!-- Session Stats Card -->
+    <div class="stat-card">
+      <div class="stat-label">Cards Created This Session</div>
+      <div class="stat-value" id="session-count">0</div>
+      <div class="stat-subtext" id="stat-subtext">Automating incorrect questions</div>
+    </div>
+
+    <!-- Main Toggles -->
+    <div class="control-section">
+      <div class="control-row">
+        <div class="control-info">
+          <label class="control-label" for="auto-mode-toggle">Auto-save on Wrong Answer</label>
+          <span class="control-desc">Triggers automatically when explanation appears</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="auto-mode-toggle" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="control-row">
+        <div class="control-info">
+          <label class="control-label" for="include-images-toggle">Include Images / Diagrams</label>
+          <span class="control-desc">Attaches question & explanation figures</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="include-images-toggle" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="control-row">
+        <div class="control-info">
+          <label class="control-label" for="target-side-select">Card Placement</label>
+          <span class="control-desc">Front / Back card layout</span>
+        </div>
+        <select id="target-side-select" class="custom-select">
+          <option value="all-front" selected>All on Front (Objective + Images)</option>
+          <option value="front-back">Front: Objective / Back: Images</option>
+          <option value="all-back">Back: Objective + Images</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Manual Action Trigger -->
+    <div class="action-section">
+      <button type="button" id="manual-trigger-btn" class="btn btn-primary">
+        <svg class="btn-icon" viewBox="0 0 384 512">
+          <path fill="currentColor" d="M0 256L28.5 28c2-16 15.6-28 31.8-28H228.9c15 0 27.1 12.1 27.1 27.1c0 3.2-.6 6.5-1.7 9.5L208 160H347.3c20.2 0 36.7 16.4 36.7 36.7c0 7.4-2.2 14.6-6.4 20.7l-192.2 281c-5.9 8.6-15.6 13.7-25.9 13.7h-2.9c-15.7 0-28.5-12.8-28.5-28.5c0-2.3 .3-4.6 .9-6.9L176 288H32c-17.7 0-32-14.3-32-32z"/>
+        </svg>
+        <span>Save Current Question Now</span>
+      </button>
+      <div class="shortcut-hint">Shortcut: <kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd></div>
+    </div>
+
+    <!-- Footer Controls -->
+    <footer class="popup-footer">
+      <button type="button" id="clear-duplicates-btn" class="btn-link" title="Clear duplicate prevention cache">
+        Reset Duplicate History
+      </button>
+      <span class="footer-divider">•</span>
+      <span id="saved-count-text">0 questions tracked</span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "Coursology Flashcard Sync",
+  "version": "1.0.0",
+  "description": "Automates flashcard creation from incorrect questions and Educational Objectives on Coursology QBank.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "*://coursology-qbank.com/*",
+    "*://*.coursology-qbank.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://coursology-qbank.com/*",
+        "*://*.coursology-qbank.com/*"
+      ],
+      "js": [
+        "selectors.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "save-to-card-now": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "mac": "Command+Shift+S"
+      },
+      "description": "Save current Educational Objective to Flashcard"
+    }
+  }
+}
